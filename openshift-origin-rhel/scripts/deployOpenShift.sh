@@ -11,10 +11,21 @@ MASTERPUBLICIPADDRESS=$6
 NODE=$7
 NODECOUNT=$8
 ROUTING=$9
-
 NODELOOP=$((NODECOUNT - 1))
-
 DOMAIN=$( awk 'NR==2' /etc/resolv.conf | awk '{ print $2 }' )
+
+runuser -l $SUDOUSER -c "echo \"$SUDOUSER\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$PASSWORD\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$PRIVATEKEY\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$MASTER\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$MASTERPUBLICIPHOSTNAME\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$MASTERPUBLICIPADDRESS\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$NODE\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$NODECOUNT\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$ROUTING\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$NODELOOP\" >> installlog.txt"
+runuser -l $SUDOUSER -c "echo \"$DOMAIN\" >> installlog.txt"
+
 
 # Generate public / private keys for use by Ansible
 
